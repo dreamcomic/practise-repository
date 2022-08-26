@@ -133,3 +133,30 @@
 //     system("pause");
 //     return 0;
 //
+
+
+
+The second fay:
+#include <stdio.h>
+#include <stdlib.h>
+ int main()
+ {   
+     char a = 'b';
+     char password[20] = {0};
+     printf("input your password:\n");
+     scanf("%s\n", password);//scanf扫描输出之后敲的回车键，会于输出缓冲区留下\n.而如果在%s后使用了\n，则会导致下一次输入非空白字符才能结束，而这下一次输入会留在缓冲区。
+     getchar();//为了清楚上次残留的\n,这里多用一个getchar吸收掉\n来避免后续进入下一个getchar。
+     printf("please confirm your password(y/n):\n");
+     a = getchar();
+     if('y'== a)
+     {  
+        printf("succes\n");
+     }
+     else
+     {  
+        printf("give up\n");
+     }
+     system("pause");
+     return 0;
+
+ }
