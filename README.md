@@ -159,4 +159,4 @@ The second fay:
      system("pause");
      return 0;
 
- }
+ }这段代码运行时，如果输入空格键，scanf只会读取空格以前的东西。而下一个来的，就会读取空格。
