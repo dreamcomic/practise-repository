@@ -160,3 +160,29 @@ The second fay:
      return 0;
 
  }这段代码运行时，如果输入空格键，scanf只会读取空格以前的东西。而下一个来的，就只会读取空格。
+
+
+the third day（scanf与缓冲区）
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{  int a =1;
+   char c = '1';
+   char password[10] = {0};
+   printf("input your password:\n");
+   scanf("%s", password);
+   while((c=getchar())!='\n');    //经过实验发现:这里while后面，要加隔断性语句或字符。如这里while后面就该有；。但是由于{}有表示隔断的作用，所以{}后面不再加分号。所以这里用空的{}也可以。
+   printf("please confirm your password");
+   a = getchar();
+   if('y'==a)
+   {  
+      printf("succeed creating your account");
+   }
+   else
+   {  
+      printf("give up your password");
+   }
+   system("pause");
+   return 0;
+
+}
