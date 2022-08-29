@@ -252,5 +252,25 @@ int main()
     return 0;
 }
 
+//for循环中的break与continue
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   int a = 0;
+    for(a = 1;a <=100; a+=1)
+    {   
+        printf("a = %d\n", a);
+        if(a>=10)
+        {   
+            a+=90;
+            printf("b = %d\n", a);
+            break;  //这里的break一样是跳出循环。
+        }
+        else         
+            continue;//continue回到的是exp2；
+    }
+    system("pause");
+    return 0;
+}
 
 
