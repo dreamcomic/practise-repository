@@ -234,3 +234,23 @@ int main()
     return 0;
 }
 
+
+//for循环
+//for(exp1; exp2; exp:3)
+//exp1是初始化部分用于初始化循环变量的。exp2时判断部分，用于判断循环时候的终止。表exp3为调整部分，用于循环条件的调整。
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+    int a = 0;
+    for(a = 1; a<=100; a+=2)//for循环从exp1开始，到达exp2
+    {   
+        printf("%d\n", a);  //从exp2到{}。
+        a++;                //执行完{}到exp3。
+    }                       //再次返回exp2。
+    system("pause");
+    return 0;
+}
+
+
+
