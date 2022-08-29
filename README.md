@@ -186,3 +186,34 @@ int main()
    return 0;
 
 }
+
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+    int y1, j1, f1, y2, j2, f2=1;
+    int y, j, f = 2;
+    int shiftj = 0;
+    int shifty = 0;
+    float ss = 0.000000;
+    scanf("%d %d %d", &y1, &j1, &f1);
+    scanf("%d %d %d", &y2, &j2, &f2);
+    f = f1 + f2;
+    if(f>=10)
+    {   
+        f = f -10;
+        shiftj = 1;
+    }    
+    j = j1 + j2 + shiftj;
+    if(j>=10)
+    {   
+        j = j-10;
+        shifty = 1;
+    }
+    y = y1 +y2 + shifty;
+    ss = y + j/10.0 +f/100.0;
+    printf("%f\n", ss);
+    system("pause");
+    return 0;
+}
