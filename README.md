@@ -274,3 +274,21 @@ int main()
 }
 
 
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+    int i =0;
+    int k =1;
+    for(i=0; 0==k;i++,k++)//这里如果写成k=0，就会使判断恒为假，而无法循环
+    k++;
+    printf("k = %d ", k);
+    system("pause");
+    return 0;
+}
+
+
+
+
+
+
