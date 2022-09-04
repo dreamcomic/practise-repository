@@ -341,6 +341,46 @@ int main()
 
 
 
+#include <stdlib.h>
+#include <stdio.h>
+int a ;  int b;  int c;//这是全局变量给与函数多个输出值。只要定义的是函数之外的。
+int la()
+{   
+    if(a<b)
+    {   
+        int d = 0;
+        d = a;
+        a = b;
+        b = d;
+    }
+    if(a<c)
+    {   
+        int d = 0;
+        d = a;
+        a = c;
+        c = d;
+    }
+    if(b<c)
+    {   
+        int d = 0;
+        d = b;
+        b = c;
+        c = d;
+    }
+
+}
+int main()
+{   
+    scanf("%d%d%d",&a, &b, &c);
+    la();
+    printf("%d>%d>%d", a, b, c);
+    system("pasue");
+    return 0;
+}
+
+
+
+
 
 
 
