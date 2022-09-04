@@ -288,6 +288,32 @@ int main()
 }
 
 
+4th september
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+    int a = 1;
+    int b = 1;
+    int e = 0;//这里值得我们注意的是变量的作用域。
+    for(b = 1; b<=3; b++)
+    {
+        int c = 1;
+    for(a = 1,c = 1; a<b+1;a++)
+    {        c = c*a;
+    }
+            e = e + c;
+        if(3==b)
+        {   
+            printf("%d\n", e);
+        }
+    }
+    system("pause");
+    return 0;
+}
+
+
+
 
 
 
