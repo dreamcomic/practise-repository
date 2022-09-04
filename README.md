@@ -313,6 +313,33 @@ int main()
 }
 
 
+#include <stdio.h>//switch语句中的switch（）中的括号必须是整形。
+#include <stdlib.h>
+#include <string.h>
+int main()
+{   int a =0;
+    char password[20] = {0};
+    for(a = 0; a<3;a++)
+    {   
+        printf("in put your password:\n");
+        scanf("%s",password );
+        if(strcmp(password, "123456") ==0)//C语言中字符串的相等必须要通过转换为strcmp函数来比较。
+        {   
+            printf("succeed logining\n");
+            break;
+        }
+    } 
+    if(3==a)
+    {   
+        printf("The number of your wrong password is three,please wait try tomorrow.");
+    }
+    system("pause");
+    return 0;
+
+}
+
+
+
 
 
 
