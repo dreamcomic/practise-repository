@@ -267,7 +267,7 @@ int main()
             break;  //这里的break一样是跳出循环。
         }
         else         
-            continue;//continue回到的是exp2；
+            continue;//continue回到的是exp3；
     }
     system("pause");
     return 0;
