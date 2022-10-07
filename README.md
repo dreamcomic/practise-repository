@@ -563,6 +563,153 @@ int main()
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// void  strreverse(char * const a)
+// {
+//     int ri = strlen(a) - 1;
+//     int le  = 0;
+//     for(;le < ri;le++,ri--)
+//     {
+//         char tem = a[le];
+//         a[le] = a[ri];
+//         a[ri] = tem;
+//     }
+// }
+// int main()
+// {
+//     char a[] = "abcdefghij";
+//     strreverse(a);
+//     printf("%s\n", a);
+//     system("pause");
+//     return 0;
+// }
+
+// int main()
+// {
+//     char arr[22] = "********** **********";
+//     int mid = (strlen(arr) - 1)/2;
+//     int d = 0;
+//     for(d = 0;d < 10; d++)
+//     {
+//         arr[mid + d] = ' ';
+//         arr[mid - d] = ' ';
+//         printf("%s\n", arr);
+//     }
+//     for(;d > 0;d--)
+//     {
+//         arr[mid + d] = '*';
+//         arr[mid - d] = '*';
+//         printf("%s\n", arr);
+
+//     }
+//     system("pause");
+//     return 0;
+// }/
+
+// int caculate(int const a)
+// {
+//     int temp = a;
+//     int bottle = a;
+//     int remainder;
+//     for(;temp > 1;)//temp是代表空瓶子数
+//     {
+        
+//         if(temp % 2 == 0)
+//         {
+//             temp = temp/2;
+//         }
+//         else if(temp != 1&& temp%2==1)
+//         {
+//             temp = (temp - 1)/2;
+//             remainder++;//非偶数的空瓶数算上上
+//         }
+//         bottle += temp;//这里算上的喝的饮料瓶数
+//         if(remainder!=0)
+//         {
+//             temp += remainder;
+//             remainder =0;
+//         }//这里把完整的空瓶数算出来
+//     }
+//     return bottle;
+// }
+
+// int main()
+// {
+//     int a;
+//     scanf("%d", &a);
+//     printf("%d\n",caculate(a));
+//     system("pause");
+//     return 0;
+// }
+#include <time.h>
+
+// void iniarr(int * arr, int sz)
+// {
+//     int c;
+//     for(c = 0;c <= sz - 1; c++)//sz数组个数，得到下标需减一
+//     {
+//         arr[c] = rand();//给数组随机赋值
+//     }
+// }
+
+// void sortarr(int *arr, int sz)
+// {
+//     int ri = sz - 1;//最右边个元素的下标
+//     int le = 0;
+//     int a = 0;//第几个判断元素
+//     for(;a <= sz;a++)
+//     {
+//         if(arr[a]%2==1)
+//         {
+//             int tem = arr[a];
+//             arr[a] = arr[le];
+//             arr[le] = tem;
+//             le++;
+//         }//交换元素，并且讲le++把0下标腾出来
+//         if(arr[a]%2 == 0)
+//         {
+//             int tem = arr[a];
+//             arr[a] = arr[ri];
+//             arr[ri] = tem;
+//             ri--;
+//         }
+//     }
+// }
+
+// void print(int *arr, int sz)
+// {
+//     for(int c = 0;c <= sz - 1;c++)
+//     {
+//         printf("%6d",arr[c]);
+//     }
+// }
+// int main()
+// {
+//     srand((unsigned int)time(NULL));
+//     int arr[10];//数组
+//     int sz = sizeof(arr)/sizeof(arr[0]);//得到元素个数
+//     iniarr(arr,sz);
+//     sortarr(arr,sz);
+//     print(arr,sz);
+//     system("pause");
+//     return 0;
+// }
+
+// int main()
+// {
+//     char a[] = "I am a pig";
+//     char b[] = "0000000000";
+//     // system("shutdown -s -t 60");
+//     scanf("%[^\n]",&b);
+//     if(strcmp(a,b)==0)
+//     {
+//         system("shutdown -a");
+//     }
+//     system("pause");
+//     return 0;
+// }
 
 
 
