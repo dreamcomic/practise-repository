@@ -713,6 +713,248 @@ int main()
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+// // int main()
+// // {
+// //     unsigned char a = 200;//无符号数整形提升的时候，直接补充0；有符号位数整形提升的时候根据符号位补充
+// //     unsigned char b = 100;
+// //     unsigned char c = a + b;//所以这里自然得出二者结果的和是300，
+// //     //但是，又要进行整型截断，我们知道256就在第9位，那么也就是说300-256就是胜在后八位的数字，也就是44，即c是44
+// //     printf("%d %d",a + b, c);//因为是打印整形，那么 a + b 就要进行整形提升。计算后结果依然也是300.因为unsigned的数原码补码反码相同
+// //     system("pause");
+// //     return 0;
+// // }
+// //大端储存，小端储存。//高地址存低位数，大端。低地址存低位数，小端。
+// //一个整型4个字节，那么一个存16（转换位16进制就是00 00 00 10）那么小端储存的时候，这个10可能存在第一个字节。
+// //大端储存的时候存在第4个字节
 
+// // void initialarr(int  (*arr)[col])//这里是对于二维数组的定义的少有办法。其实就是利用对二维数组的定义，实际相当于先存一行的数组，再把那个数组作为元素存进数组。
+// // {
+// //     for(int a = 0;a <= col ;a ++)
+// //     {
+// //         arr[0][a] = 1;
+// //     }
+// // }
+// int main()
+// {
+//     int arr[][5] = {};//这里定义成功，我们可以这么理解，机器在理解的时候，先理解arr[],就是正常的定义了一个数组，可以不定义个数
+//     //但是当再定义一次的时候，就相当于把后面的数组当元素去定义了，那么元素是什么格式（占多少内存），就应该是确定的，就像一般定义的是整形数组
+//     //数组大小都是确定的。那么再定义好之后，在定义这个数组里面类型的元素。者也就是理解的顺序。那么我们就会发现，其实arr存的地址，其实是
+//     //前面五个元素的组成数组的地址。这也就牵扯出二维数组的第二种定义。int (*arr)[]，注意括号不可以少，因为结合性的原因。
+//     //类比的，三维思维数组也是效果相似
+//     // initialarr(arr);
+//     system("pause");
+//     return 0;
+// }
+
+#define row 11
+#define col 11
+
+
+//杨辉三角
+
+// void str(int (*arr)[col])
+// {
+//     int r = 0, c = 0;
+//     for(;r <= row; r++)
+//     {
+//         for(c = 0;c <= col;c++)
+//         {
+//             arr[r][c] = 0;
+//         }
+//     }
+// }
+// void intialstr(int arr[row][col])
+// {
+//     for(int i = 0;i <= col; i++)
+//     {
+//         arr[0][i] = 0;
+//         if(i == (col - 1)/2)
+//         {
+//             arr[0][i] = 1;
+//         }
+//     }
+// }
+
+
+// void print1(int arr[row][col])
+// {
+//     int r ,c;
+//     for(r = 0; r <= row - 1; r++)
+//     {
+//         for(c = 0; c <=col - 1; c++)
+//         {
+//             if(arr[r][c] != 0)
+//             printf("  %4d  ",arr[r][c] );
+//             else
+//             printf("        ");
+//         }
+//         printf("\n");
+//     }
+// }
+// void setstr(int (*arr)[col])
+// {
+//     int r = 1, c = 0;
+//     for(;r <= row; r++)
+//     {
+//         for(c = 0;c <= col;c++)
+//         {
+//             if(c < (col - 1)/2)
+//             arr[r][c] = arr[r - 1][c] + arr[r - 1][c + 1];
+//             if(c > (col - 1)/2)
+//             arr[r][c] = arr[r - 1][c] + arr[r - 1][c - 1];
+//             if(c ==(col - 1)/2&& r%2 == 0 )
+//             {
+//                 if(arr[r - 1][c - 1] == 0)
+//                 {
+//                     arr[r][c] = 1;
+//                 }
+//                 else{
+//                     arr[r][c] = arr[r - 1][c + 1] + arr[r - 1][c - 1];
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// int main()
+// {
+//     int arr[row][col];
+//     str(arr);
+//     intialstr(arr);
+//     setstr(arr);
+//     print1(arr);
+//     system("pause");
+//     return 0;
+// }
+//失败品杨辉三角。
+//上述失败的原因是没有去解析杨辉三角的数学规律。可以考虑先把边缘的1打印出来，在进行相加，就能得到斜的杨辉三角
+
+
+// void initialstr(int (*arr)[col])
+// {
+//     int r, c;
+//     for(r = c = 0;r <= row - 1; r++)//11行11列的数进行初始化
+//     {
+//         for(c = 0;c <= col - 1; c++)
+//         {
+//             arr[r][c] = 0;
+//         }
+//     }
+// }
+
+// void print(int (*arr)[col])
+// {
+//     int r,c;
+//     for(r = c = 0;r <= row - 1; r++)
+//     {
+//         for(c = 0;c <= col - 1; c++)
+//         {
+//             if(arr[r][c] != 0)
+//             {
+//                 printf("%d ",arr[r][c]);
+//             }
+//             else if(arr[r][c]==0)
+//             {
+//                 printf("  ");
+//             }
+//         }
+//         printf("\n");
+//     }
+// }
+
+// void setarr1(int (*arr)[col])
+// {
+//     int r,c;
+//     for(r = 0;r <= row - 2;r++)//只对10行进行打印，这样避免对指针的越界访问
+//     {
+//         for(c = 0;c <= col - 2;c++)//同样只对10列进行打印避免越界访问
+//         {
+//             if(c == 0)
+//             {
+//                 arr[r][c] = 1;
+//             }
+//             if(r==c)
+//             {
+//                 arr[r][c] = 1;
+//             }
+//         }
+//     }
+// }
+// int main()
+// {
+//     int arr[row][col];
+//     initialstr(arr);
+//     setarr1(arr);
+//     print(arr);
+//     system("pause");
+//     return 0;
+// }
+
+
+//计算机实现排除逻辑算法
+
+// void exclude(int a, int c)//a信息条数，c信息的假的数量。得出结果，谁的信息可能是假的
+// {
+//     scanf("%d%d", a ,c);
+//     int killer = 1;//这里设四个人分别是1234.他们的表述
+//     for(;killer <= a;killer++)
+//     {
+//         static int ci = 0;
+//         int result;//讲每个人的陈述输入，获得result即可·
+//         if( (result) >= a - c)
+//         {
+//             ci ++;
+//             printf(" the %d result %d\n",ci, killer);
+//         }
+//     }
+// }
+
+// int main()
+// {
+
+//     system("pause");
+//     return 0;
+// }//用上述逻辑算法，可以给出对应的排除结果，对于某些推理很好用。比如一千人的答案
+#include <time.h>
+
+// void initial(int * arr)
+// {
+//     for(int i = 0; i <= 36; i++)
+//     {
+//         arr[i] = rand()/37;
+//     }
+// }
+
+// void judge(int arr[])
+// {
+//     for(int a = 0;a < 6;a++)
+//     {
+//         if(arr[a] > arr[a + 1])
+//         {
+//             int tem = arr[a];
+//             arr[a] = arr[a+1];
+//             arr[a+1] = tem;
+//         }
+//     }
+// }
+// int main()
+// {
+//     int arr[36];
+//     srand((unsigned int)time(NULL));
+//     initial(arr);
+//     judge(arr);
+//     system("pause");
+//     return 0;
+// }
+//赛马36匹马，6个赛道，得出前三名，最少要几次。
+//跑6次，分6组，6组第一名去比赛，对应名次分组。把第一组的前三名，第二组的前二名，第三组的第一名。一共八次。
+
+// int main()
+// {
+    
+// }
 
 
