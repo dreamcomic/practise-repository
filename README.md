@@ -1105,4 +1105,45 @@ int main()
 // }
 
 
+#include "commomuse.h"
+
+// void levorotation(char *arr)//镜像右旋函数。如ABCDE->EDABC将旋转元素与之前位置形成镜像对称
+// {
+//     int ri = strlen(arr) - 1;//最右边元素的下标
+//     int le = 0;
+//     int num;//镜像右旋字符个数。
+//     scanf("%d", &num);
+//     for(int time = 0;time < num ;time++)//右旋次数
+//     {
+//         char tem = arr[ri];//先临时存储这个最右边字符
+//         for(int v = 0;v < ri - time;v++)//当右旋最左边个字符，
+//         {
+//             arr[ri - v] = arr[ri - v - 1];//移动字符
+//         }
+//         arr[le + time] = tem;//将最右边的字符放入该有的位置
+
+//     }
+// }
+
+// void judgestr(char *arr,char*arr1)//判断字符串是否相等
+// {
+//     if(strcmp(arr,arr1)==0)
+//     {
+//         printf("yes");
+//     }
+// }
+// int main()
+// {
+//     char arr [] = "ABCDE";
+//     char arr1 [] = "EABCD";
+//     levorotation(arr);
+//     printf("%s\n", arr);
+//     judgestr(arr, arr1);
+//     system("pause");
+//     return 0;
+// }
+
+//递增型矩阵函数
+//1.先对行用折半查找。在找的时候注意留下两行。实现时，将le < ri - 1即可。如3，5，这样所得结果才是两行->就变成3，4，注意比较所得两行是否与其相等
+
 
