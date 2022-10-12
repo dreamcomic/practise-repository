@@ -1145,5 +1145,113 @@ int main()
 
 //递增型矩阵函数
 //1.先对行用折半查找。在找的时候注意留下两行。实现时，将le < ri - 1即可。如3，5，这样所得结果才是两行->就变成3，4，注意比较所得两行是否与其相等
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <windows.h>
+#include <string.h>
+#include <math.h>
+#include <malloc.h>
+void initial(int *arr,int get1, int get2);
+void print(int *p,int sz);
+void judge(int *p,int get1, int get2);
+void printresult(int *arr, int *p, int sz);
 
+#include "commonuse.h"
+
+void initial(int *p,int get1, int get2)
+{
+    int le = 0,sz = get2 - get1 + 1;//数组个数sz
+    for(;le <=sz - 1;le++,get1++)//sz-1才是最右边下标的元素
+    {
+        p[le] = get1;
+    }
+
+}
+void print(int *p,int sz)
+{
+    int le = 0;
+    for(;le <=sz - 1;le++)//sz-1才是最右边下标的元素
+    {
+        printf("%4d", p[le]);
+    }
+}
+
+void judge(int *p,int const get1, int const get2)
+{
+    int tem = 0;//暂时储存我们的每位数相乘的答案。
+    int Tem = 1;//暂时存储我们的每次迭代结果
+    
+    for(int a = 0;a <= get2 -  get1;a++)//对每个数进行筛查的循环
+    {
+        Tem = p[a];
+        int value = 1;//value表示临时数组里面存储的元素个数
+        int attch = 0;//表示依附幸福数的个数
+        for(;Tem > 0;Tem  = tem)//这个循环算出最终是否是独立幸福数
+        {
+            
+            int arr[value];//创建动态数组//c语言里面居然有，早知道前面直接就创建动态数组了。
+            arr[value - 1] = Tem; //将算出来的数存入临时数组进行比较，第一个数据也要储存。
+            for(tem = 0;Tem > 0;Tem /= 10)//这个循环算出一次迭代的值
+            {
+                tem += pow((Tem%10),2);//计算平方
+            }
+            attch--;//用此来标记有多少依附性幸福数,这里把1也算进去
+            for(int le = 0;le <= get2 -get1;le++)
+            {
+                if(p[le]==tem)
+                {
+                    p[le] = 0;
+                }
+            }//以这种方法筛掉依附性幸福数，同时是筛选掉一部分依附非幸福数的的数，依此法，可以保证前面某些数即使被认定为幸福数，后续便于筛查出特立
+            for(int c = 0;c <= value - 1;c++)//这个循环用于检查一个数是否为死循环
+                {
+                    if(arr[c] == tem && tem != 1)
+                    {
+                        p[a] = 0;
+                        tem = 0;//使tem等于0，那么在开始的时候自然就会停下循环
+                        break;
+                    }
+                }//如此就判断出非幸福数，同时也把依附性幸福数排除掉。
+            if(tem == 1)//说明是循环数
+            {
+                p[a] =  attch;//因为前面把1也算如依附幸福数，所以在后面算依附性应该要除掉一个数
+                break;//得到1说明是幸福数，跳出循环。
+            }
+            value++;//如果这里完成一次之后，那就对value需检测元素加一
+        }
+    }
+    
+}//这里将数组里面每个数字给换成0或者负数，负数说明是独立性幸福数，将独立性幸福数负数绝对值减一就是其依附性幸福数个数。
+
+void printresult(int *arr, int *p, int sz)//sz是传入p数组的元素个数
+{
+    for(int a = 0;a <= sz - 1;a++)
+    {
+        if(p[a] < 0)
+        {
+            printf("happy independence number is ,the number of dependent number is:%d   %d\n",arr[a], -(p[a] + 1));//由于前面将1算为依附性幸福数的
+        }
+    }
+
+    //计算出其是否为质数，且计算其独立性。
+}
+#include "commonuse.h"
+
+int main()
+{
+    int * p = NULL;
+    int get1, get2;
+    scanf("%d %d",&get1, &get2);//默认输入的是闭区间，get2 - get1 +1是数组元素个数
+    p = (int *)malloc(sizeof(int)* (get2 - get1 + 1));//决定区间，那么这个时候p就像数组名。一样了，注意这里的*是乘法，不是解引用符号
+    int arr[get2 - get1 + 1];//用这个数组来储存和标记数字，对p里面本身存的数来对比
+    initial(p, get1 ,get2 );//对p初始化，把输入的数放入数组，方便取用，注意使用了malloc函数不要进行指针位移就ok。
+    initial(arr, get1 ,get2 );
+    judge(p,get1,get2);
+    printresult(arr,p,get2 - get1 + 1);
+    free(p);
+    p = NULL;
+    system("pause");
+    return 0;
+}
 
