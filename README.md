@@ -1255,3 +1255,155 @@ int main()
     return 0;
 }
 
+#include "commonuse.h"
+
+// int mystrlen(char const * arr)
+// {
+//     int a = 0;
+//     assert(arr != NULL);
+//     while(arr[a])
+//     {
+//         a++; 
+//     }
+//     return a;
+// }
+
+// int  main()
+// {
+//     char arr[] = "abcde";
+//     printf("%d\n", mystrlen(arr));
+//     system("pause");
+//     return 0;
+// }
+
+//strlen函数，返回类型是unsigned long long
+//strcat 函数
+
+//1.函数的被接受函数必须有足够的空间接纳源字符串。
+//2.源字符串必须要以\0结尾，否则容易出bug
+//3.返回值是被接受字符串的首地址 
+//4.追加的字符串会在被接受字符串里面的\0去追加
+
+// char * my_strcat(char * arr1, char const* arr2)
+// {
+//     char* ret  = arr1;//将被接受字符串首地址存储起来
+//     assert(arr1 && arr2);//判断二者不是空指针。
+//     while(*(arr1) != '\0')
+//     {
+//         arr1++;
+//     }
+//     while(*(arr1 )++ = *(arr2)++)
+//     {
+//         ;
+//     }
+//     return ret;
+
+// }
+// int main()
+// {
+//     char arr1 [30]= "hello";
+//     char arr2[10] = "world";
+//     my_strcat(arr1,arr2);
+//     system("pause");
+//     return 0;
+// }
+//上述通过对strcat函数的认为实现，有助于了解。
+
+//strcmp函数，比较字符串，从第一个开始，直到有一个字符不相等,这个函数也是有缺陷的，就是如果一个字符串过于长，
+//会导致另外一个字符串越界访问
+
+// int main()
+// {
+//     char * a = "abcd";
+//     char * b = "djiw";
+//     strcmp(a,b);//我们发现这个函数值饭返回之整形。
+//     strcat(a,b);
+//     strlen(a);//而strlen和
+//     system("pause");
+//     return 0;
+// }
+
+//strncmp//注意这个函数比较0个字符串时，默认是相等的字符串
+//strncat
+//strncpy
+//以上三个函数，使用和其原型差不多
+//区别是，函数多了一个变量，表示操作的字符个数
+//所以strcat和strncpy一样返回被赋值字符串地址·
+
+
+// char* my_strncpy(char* arr,const char *ar1, unsigned long num)
+// {
+//     int c = 1;
+//     char *ret = arr;
+//     assert(arr && ar1);
+//     while( num >= c++)
+//     {
+//         *arr++ = *ar1++;
+//     }
+//     return ret;
+// }
+// //assert不要少，const也是
+// int main()
+// {
+//     char arr[] = "abcf";
+//     char ar1[] = "mciw";
+//     printf("%s\n",strncpy(arr, ar1,2));
+//     my_strncpy(arr, ar1, 4);
+//     system("pause");
+//     return 0;
+// }
+
+
+
+//strstr字符串查找函数，
+//这个函数在查找时，比较字符串，比较到目标字符串\0以前便不在比较，
+//然后返回找到字符串的首地址
+
+char * my_strstr(const char* arr1, const char*arr2)
+{
+    
+    int num = 0;
+    char * tem = (char*)arr1;//由于，给arr1和arr2定义的事const变量，所以这里需要强制类型转换，这里就是对变量的理解，const类型的变量依旧是变量
+    char * tem2 = (char*)arr2;//但是如此操作之后，就需要注意不要用设定的指针改变字符串内容
+    assert(arr1&&arr2);
+    while(*arr1)
+    {
+        tem = (char*)arr1;//用临时变量去储存地址的值
+        tem2 = (char*)arr2;
+        while(*tem && *tem2)//这样在是\0就停止比较。任意一个是\0，就会停止比较。
+        {
+            if(*tem == *tem2)
+            {
+                tem++;
+                tem2++;
+            }
+            else{
+                arr1++;
+                break;
+            }
+        }
+        if(*tem2 == '\0')//如果打印出str2是\0那么就说明比较出字符串。
+        {
+            return (char*)arr1;
+        }
+    }
+    return NULL;
+}
+
+int main()
+{
+    char *p1 = "abbcd";
+    char *p2 = "bc";
+    char* p3 = my_strstr(p1, p2);    
+    if(p3)//例如这里的p3就是返回的b的地址，
+    {
+        printf("%s\n", p3);
+    }
+    else{
+        
+    }
+    printf("%d\n", strcmp(p1,p2));
+
+    system("pause");
+    return 0;
+}
