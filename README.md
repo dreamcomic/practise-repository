@@ -1561,3 +1561,41 @@ int main()
     return 0;
 }
 
+#include "commonuse.h"
+// int main()
+// {
+//     char a[] = "abcd";
+//     char p[1];
+//     strcpy(p,a);
+//     printf("%s\n",p);
+//     system("pause");
+//     return 0;
+// }
+
+//strtok函数
+int main()
+{
+    char a[5] = {'h','.','l','.','w'};
+    char b[92]  = "eeeee0000\0eeeee";
+    char* c = ".";
+    strcpy(b, a);
+    b[5] = 'e';
+    char* ret  = strtok(b, c);
+    for(;ret != NULL;)
+    {
+        printf("%s  \n", ret);
+        ret = strtok(NULL,c);
+        if(ret == NULL)
+        {
+            ret = &(b[9]);
+        }
+    }
+    system("pause");
+    return 0;
+}
+
+//上述使用中，我们发现，这个函数的使用，就是对给定的源字符串，
+//在被动字符串中，逐一找出字符，并且将该字符变为\0，并且返回首字符地址，
+//并且记住变为\0字符的下一个字符的地址，下一次再调用时，只需要将被动字符串改为空指针即可
+//当遇见\0的时候，就会会停止，并且返回本次调用的首元素地址，但是函数就不再会再记住下一个地址，并且下一次再以空指针调用这个函数时
+//这个函数就会直接返回空指针。
