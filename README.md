@@ -1599,3 +1599,88 @@ int main()
 //并且记住变为\0字符的下一个字符的地址，下一次再调用时，只需要将被动字符串改为空指针即可
 //当遇见\0的时候，就会会停止，并且返回本次调用的首元素地址，但是函数就不再会再记住下一个地址，并且下一次再以空指针调用这个函数时
 //这个函数就会直接返回空指针。
+
+
+
+
+#include "commonuse.h"
+// int main()
+// {
+//     char a[] = "abcd";
+//     char p[1];
+//     strcpy(p,a);
+//     printf("%s\n",p);
+//     system("pause");
+//     return 0;
+// }
+
+// //strtok函数
+// int main()
+// {
+//     char a[5] = {'h','.','l','.','w'};
+//     char b[92]  = "eeeee0000\0eeeee";
+//     char* c = ".";
+//     strcpy(b, a);
+//     b[5] = 'e';
+//     char* ret  = strtok(b, c);
+//     for(;ret != NULL;)
+//     {
+//         printf("%s  \n", ret);
+//         ret = strtok(NULL,c);
+//         if(ret == NULL)
+//         {
+//             ret = &(b[9]);
+//         }
+//     }
+//     system("pause");
+//     return 0;
+// }
+
+//上述使用中，我们发现，这个函数的使用，就是对给定的源字符串，
+//在被动字符串中，逐一找出字符，并且将该字符变为\0，并且返回首字符地址，
+//并且记住变为\0字符的下一个字符的地址，下一次再调用时，只需要将被动字符串改为空指针即可
+//当遇见\0的时候，就会会停止，并且返回本次调用的首元素地址，但是函数就不再会再记住下一个地址，并且下一次再以空指针调用这个函数时
+
+
+
+
+//strerror函数，输入值是整形。返回一个字符串。
+//errno是一个全局变量，监视库函数的执行情况，有对应的错误就会反回相对应的值。
+//而再把值拿给strerror函数就会返回出是什么错误
+
+
+// int main()
+// {
+//     FILE* pf = fopen("commonuse.h","r");
+//     printf("%s\n",strerror(errno));//我们就会发现是无错误，返回不同值，对应不同错误。
+//     system("pause");
+//     return 0;
+// }
+
+
+//字符判断函数
+//iscntrl:判断是否为控制字符,是就返回非0的数，不是就返回0；常见控制字符，换行,水平制表，del等
+//isspace：kongbaizifu：空格，换页，换行，回车，水平制表，垂直制表
+//isdigit：十进制数字0-9
+//isxdigit：十六进制数字包含十进制数字和小大写字母a-fA-F.\xhh表示16紧致数
+//islower：是否为小写字母
+//isupper：是否为大写字母
+//isalpha：是否是字母
+//isalnum：是否是字母或者数字a-z,A-Z,0-9
+//ispunct：是否为标点
+//isgraph：是否为图形字符
+//isprint：打印任何字符
+
+// int main()
+// {
+//     char a = '\t';
+//     printf("%d",iscntrl(a));
+//     char b[] = '我';
+//     printf("%d", isxdigit(b));
+//     system("pause");
+//     return 0;
+// }
+
+
+//字符转换：tolower//替换为小写字符
+//          toupper//i替换为大写字符
