@@ -1684,3 +1684,106 @@ int main()
 
 //字符转换：tolower//替换为小写字符
 //          toupper//i替换为大写字符
+
+
+
+#include "commonuse.h"
+//内存操作函数
+
+//mencpy函数，对指定字节进行拷贝到对应数组
+//这个函数则对任意类型都可以进行拷贝，是直接对内存进行操作。
+//即使是结构体或，结构体数组，二维数组（二维数组相当于存了n行一维数组），者指针数组，数组指针（整个数组的地址）也可以。
+// int main()
+// {
+//     int arr[] = {1,2,3,4,5};
+//     int arr2[6];
+//     memcpy(arr2,arr,sizeof(arr));//这个函数搭配sizeof使用很方便
+//     system("pause");
+//     return 0;
+// }
+
+// int my_bottle(int a)
+// {
+//     int b,d;//c做瓶数，b做余下的瓶数
+//     for(d = 20;a > 1;)
+//     {
+//         b += a%2;//把可能余的1保留在b
+//         d += a/2;//由于c语言整形是直接甩掉尾数，所以这里不用考虑1的问题
+//         a/=2;//算出下一次瓶数
+//         a+=b;
+//         b = 0;
+//     }
+//     return d;
+// }
+
+// int main()
+// {
+//     int bottle = 20;
+//     printf("%d\n", my_bottle(bottle));
+//     system("pause");
+//     return 0;
+// }
+// void * my_memmove(void* dest,void * sor,size_t count)
+// {
+//     assert(dest&&sor);
+//     void *a = dest;
+//     if(dest > sor)
+//     {
+//         while(count--)
+//         {
+//             *((char*)dest + count) = *((char*)sor + count);
+//         }
+//     }
+    
+//     else if(dest < sor)
+//     {
+//         char* c = (char*)dest;
+//         char* d = (char*)sor;
+//     while(count--)
+//     {
+        
+//         *((char*)c) = *((char*)d);
+//         c++;d++;
+//     }
+//     }
+//     return a;
+// }
+
+
+// int main()
+// {
+//     int arr[5] = {1, 2, 3, 4, 5};
+//     my_memmove(arr, arr+2,12);
+//     system("pause");
+//     return 0;
+// }
+
+//memcmp
+// int main()
+// {
+//     int a[] = {1,2,3,4,5};
+//     int b[] = {1,2,4,3,5};
+//     printf("%d\n", memcmp(a,b,9));//结果-1
+//     system("pause");
+//     return 0;
+// }
+//与字符串比较函数类似，但是是一个一个字节比较
+//那么就涉及小端储存以及大端储存问题，如下
+// int main()
+// {
+//     int a[] = {1,2,17,4,5};
+//     int b[] = {1,2,4,3,5};
+//     printf("%d\n", memcmp(a,b,9));//结果1
+//     system("pause");
+//     return 0;
+// }
+
+//这里就是为什么说，小段储存，因为低位存在低地址，所以，17，是01 01 00 00导致大小比较结果不同
+
+// int main()
+// {
+//     short a[] = {1,2,3,4,5};
+//     memset(a,-1,20);//这里值得注意的是memset函数改变，依旧是字节字节得改，所以这里输入50，那么就把5整形截断，改变后放入进去
+//     system("pause");
+//     return 0;
+// }
