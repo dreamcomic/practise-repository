@@ -2209,3 +2209,273 @@ int main()
 //     system("pause");
 //     return 0;
 // }![image](https://user-images.githubusercontent.com/111947182/198504354-ef92417d-efd4-4fd0-a409-65d2c8068738.png)
+
+
+#include "commonuse.h"
+// int main()
+// {
+//     int a = 100;
+//     FILE* pf = fopen("test.tst","wb");
+//     //这个是一个打开文件，因为又写（w）操作，如果没有这个文件就会创立一个文件
+//     //注意file是一种结构体，可以点住alt加点击出查看
+//     fwrite(&a,4,1,pf);
+//     fclose(pf);//这个fclose就是关闭这个文件
+//     pf = NULL;//这里把这个文件给定义成null
+//     //原因是防止对文件的错误调用
+//     printf(" ");//     system("pause");
+//     return 0;
+// }
+
+// int main()
+// {
+//     // FILE* pf = fopen("test.t ,"r");
+//     //这种写法是相对路径，标明 前的文件的哪里。
+//     // fopen("C:\\c_code\\.vscode","r");
+//     //这种就是绝对路径，可以直接读取到数据是在哪里的
+
+//     FILE* pf = fopen("test.txt","r");
+//     if(pf == NULL)
+//     {
+//         printf("%s\n",strerror(errno));
+//     }
+//     //成功就成功打开或者创建文件，如果文件没有打开
+//     //那么就会返回空指针。
+//     fclose(pf);
+//     pf = NULL;
+//     system("pause");
+//     return 0;
+// }
+//  ..表示上一级路径下。
+//  .表示当前路径
+
+
+
+// int main()
+// {
+//     FILE* pf = fopen("test.txt","w");
+//     if(pf == NULL)
+//     {
+//         printf("%s\n",strerror(errno));
+//         system("pause");
+//         return 0;
+//     }
+//    // 写文件
+//     fputc('b',pf);
+//     fputc('c',pf);
+//     fputc('d',pf);
+//     printf("%c", fgetc(pf));
+//     fclose(pf);
+//     pf = NULL;
+//     FILE* pf1 = fopen("test.txt","r");
+//     if(pf1 == NULL)
+//     {
+//         printf("%s\n",strerror(errno));
+//         return 0;
+//     }
+//     printf("\n%c",fgetc(pf1));
+//     printf("%c",fgetc(pf1));
+//     printf("%c",fgetc(pf1));
+//     printf("%s\n",strerror(errno));
+//     fclose(pf);
+//     pf = NULL;
+//     system("pause");
+//     return 0;
+// }
+
+//键盘标准输出设备，--stdin
+//屏幕标准输出设备.--stdout
+
+// int main()
+// {
+//     int  ch = fgetc(stdin);
+//     fputc(ch,stdout);
+//     system("pause");
+//     return 0;
+// }
+
+// int main()
+// {
+//     char a [] = "onfoenf3emfew";
+//     FILE* pf =fopen("test.txt","r");
+//     if(pf == NULL)
+//     {
+//         printf("%s\n",strerror(errno));
+//         system("pause");
+//         return 0;
+//     }
+//     fgets(a,10,pf);//可以发现输入是到换行那么这次给字符就停止
+//     printf("%s\n", a);
+//     fgets(a,10,pf);
+//     printf("%s\n", a);
+
+//     fgets(a,10,pf);//可以发现输入是到换行那么这次给字符就停止
+//     puts(a);//打印结果说明，这里put打印是自带换行符的
+//     fgets(a,10,pf);
+//     fclose(pf);
+//     pf = NULL;
+//     puts(a);
+//     system("pause");
+//     return 0;
+
+// }
+
+// int main()
+// {
+//     char arr[ 100];
+//     // arr[10] = '1';
+//     // fgets(arr,100,stdin);
+//     // //指的注意，这里fget的输入，是会将回车敲进去的，也就是换行符也会读取进去，读取到换行符为止,并且会于字符串后面自动补充\0;
+//     // fputs(arr,stdout);
+
+//     gets(arr);//
+//     puts(arr);
+//     system("pause");
+//     return 0;
+// }
+
+//fgets,GETS从标准输入流读取、
+//fput,PUTS输出到标准输出流.
+//
+struct math
+{
+    char arr[100];
+    int a;
+    float b;
+};
+// int main()
+// {
+//     struct math c = {"nuiwnei",33132,9489.80};
+//     FILE* pf = fopen("tset.txt","w");
+//     if(!pf)
+//     {
+//         printf("%s\n", strerror(errno));
+//         system("pause");
+//         return 0;
+//     }
+
+
+//     fscanf(stdin,"%s %d %f",&(c.arr),&(c.a),&(c.b));
+        //决定输入数据的地方
+//     fprintf(pf,"%s %d %f",c.arr,c.a,c.b);
+        //决定输出数据的地方
+//     fclose(pf);
+//     pf = NULL;
+//     system("pause");
+//     return 0;
+// }
+
+// int main()
+// {
+//     struct math c  = {"uiwenfueu9",832234,32.2323},tem = {0};
+//     char a[1234];
+//     sprintf(a,"%s %d %f",c.arr,c.a,(c.b));
+//     //sprintf能够将一组数组转换为字符串之后，然后进行储存
+//     printf("%s\n", a);
+//     sscanf(a,"%s%d%f",&(tem.arr),&(tem.a),&(tem.b));
+//     //通过监视我们能够发现这里的字符串里面的数据，就能转换为对应的格式数据储存到结构体里面。
+//     system("pause");
+//     return 0;
+
+// }
+
+// int main()
+// {
+//         FILE* pf = fopen("text.txt", "wb");
+//         if(!pf)
+//         {
+//                 return 0;
+//         }
+//         struct math a = {"isfije",10,3.34},b = {0};
+//         fwrite(&a,sizeof(a),1,pf);//以二进制形式输入，这份数据
+//         fclose(pf);
+//         pf = NULL;
+//         FILE* pf1 = fopen("text.txt", "rb");
+//         fread(&b,sizeof(a),1,pf1);
+//         printf("%s %d %f", b.arr,b.a,b.b);
+//         system("pause");
+//         return 0;
+// }
+
+
+//fseek.ftell,rewind
+
+
+// int main()
+// {
+//         FILE* pf = fopen("text.txt","r");
+//         if(!pf)
+//         {
+//                 return 90;
+//         }
+//         fgetc(pf);
+//         fseek(pf,-1,SEEK_END);
+
+//         //计算与起始位置的相对偏移量
+//         //单位字节
+//         int pos = ftell(pf);
+//         printf("%d\n", pos);
+//         rewind(pf);
+//         //使文件指针回到起始位置处
+//         printf("%c\n",fgetc(pf));
+//         fclose(pf);
+//         pf = NULL;
+//         system("pause");
+//         return 0;
+// }
+
+
+//文件结束原因判断feof
+//当一个文件读取结束，无论是失败还是成功
+//都可以用feof判断造成结果的原因，也就是可以判断
+//1.是文件读取到文件尾结束，还是读取失败结束
+//feof不是作为判断文件结束的函数
+//如果判断结束原因是正常读取结束，返回真，
+//因为失败的原因就返回假，也就是0
+int main()
+{   
+   //文件是否读取结束，fgetc返回的是eof
+   //fegts返回NULL
+   //fread判断返回值是否实际小于要读的个数      
+   FILE* fp = fopen("text.txt","r");
+   if(!fp)
+   {
+        perror("open the file:");//这种报错的方式，
+        //是先打印你给的字，并且再打印错误码打印的错误信息
+        //不需要引用头文件，也不需要去用错误变量。
+        // system("pause");
+        // return 0;
+   }
+   char c;
+   int a;
+   while((c=fgetc(fp))!=EOF)
+   {
+        putchar(c);
+   }
+   if(ferror(fp))
+   {
+        printf("error\n");
+   }
+   else if(a=feof(fp))
+   {
+        printf("end of filr\n");
+   }
+   fclose(fp);
+   fp=NULL;
+   system("pause");
+   return 0;
+}
+
+
+//perror
+
+// int main()
+// {
+//         FILE *pf = fopen("ervge.txt","r");
+//         if(!pf)
+//         {
+//                 perror("open file test :");
+//                 return 0;
+//         }
+        
+
+// }
